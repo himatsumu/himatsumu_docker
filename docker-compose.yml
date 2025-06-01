@@ -21,6 +21,7 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=C"
     ports:
       - "${DB_PORT}:${DB_PORT}"
     volumes:
@@ -40,5 +41,20 @@ services:
       - ./go-server/app:/app
     environment:
       - GO_ENV=development
+    env_file:
+      - .env
+
+  python-service:
+    image: python-service:latest
+    container_name: python-service
+    build:
+      context: ./python-service
+      dockerfile: ./Dockerfile
+    ports:
+      - "${PYTHON_PORT}:${PYTHON_PORT}"
+    volumes:
+      - ./python-service/app:/app
+    environment:
+      - PYTHON_ENV=development
     env_file:
       - .env

@@ -27,3 +27,9 @@ docker-compose up -d　--build
 - ローカルの `react-app/app/` と `go-server/app/` でコードを編集
 - ファイル変更は自動的にコンテナに反映
 - データベースデータは `db-data/` に永続化
+
+## postgre-sqlの使用方法
+Shellをアタッチ後に以下のコマンドを入力
+```bash
+psql -U himatsumu -d himatsumu
+```

@@ -2,3 +2,4 @@
 db-data/*
 go-server/app/*
 react-app/app/*
+.DS_Store
