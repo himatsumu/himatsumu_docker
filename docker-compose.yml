@@ -1,0 +1,44 @@
+services:
+  react-app:
+    image: react-app:latest
+    container_name: react-app
+    build:
+      context: ./react-app
+      dockerfile: ./Dockerfile
+    ports:
+      - "${REACT_PORT}:${REACT_PORT}"
+    volumes:
+      - ./react-app/app:/app
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    env_file:
+      - .env
+  postgres-db:
+    image: postgres:latest
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  go-server:
+    image: go-server:latest
+    container_name: go-server
+    build:
+      context: ./go-server
+      dockerfile: ./Dockerfile
+    ports:
+      - "${GO_PORT}:${GO_PORT}"
+    volumes:
+      - ./go-server/app:/app
+    environment:
+      - GO_ENV=development
+    env_file:
+      - .env

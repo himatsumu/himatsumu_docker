@@ -1,0 +1,24 @@
+# ローカルでビルドした場合の実行ファイルを除外
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+server # Dockerfileの go build -o で指定したバイナリ名など
+
+# Goのテストキャッシュを除外
+*.test
+*.out
+*.coverprofile
+
+# Git関連を除外
+.git/
+.gitignore
+
+# エディタ/IDE設定を除外
+.vscode/
+.idea/
+
+# OS固有ファイルを除外
+.DS_Store
+Thumbs.db

@@ -1,0 +1,27 @@
+# 依存関係フォルダを除外
+node_modules/
+
+# ビルド出力を除外
+dist/
+.vite/
+
+# ドッカー関連のファイルを除外
+Dockerfile
+Dockerfile.*
+docker-compose.yml
+docker-compose.*.yml
+.dockerignore
+
+# .git関連のファイルを除外
+.git/
+.gitignore
+
+# ローカル環境の設定ファイルを除外
+.env
+
+ログファイルを除外
+*.log
+
+OS固有のファイルを除外
+.DS_Store
+Thumbs.db

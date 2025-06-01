@@ -1,0 +1,4 @@
+./.env
+db-data/*
+go-server/app/*
+react-app/app/*
