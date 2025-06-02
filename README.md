@@ -6,7 +6,7 @@
 
 ### 環境の起動
 ```bash
-docker-compose up -d --build
+docker　compose up -d --build
 ```
 
 ### アクセス先
