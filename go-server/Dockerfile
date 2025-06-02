@@ -5,4 +5,3 @@ WORKDIR /app
 
 # コンテナ起動時に実行されるコマンド
 CMD ["tail", "-f", "/dev/null"]
-
