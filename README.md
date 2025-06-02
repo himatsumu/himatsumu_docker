@@ -28,7 +28,7 @@ docker compose up -d --build
 ### 初期構築
 - コンテナをアタッチする
 - `/app`のパスを指定する
-- `git clone ~url~.git .`コマンドを使用してクローンしてくる
+- `git clone [URL] .`コマンドを使用してクローンしてくる
 
 ## postgre-sqlの使用方法
 Shellをアタッチ後に以下のコマンドを入力
