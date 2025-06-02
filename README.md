@@ -6,7 +6,7 @@
 
 ### 環境の起動
 ```bash
-docker　compose up -d --build
+docker compose up -d --build
 ```
 
 ### アクセス先
@@ -25,10 +25,10 @@ docker　compose up -d --build
 - `python-service`: AI開発環境
 
 ## 💡 開発について
-
-- ローカルの `react-app/app/` と `go-server/app/`, `python-service/app` でコードを編集
-- ファイル変更は自動的にコンテナに反映
-- データベースデータは `db-data/` に永続化
+### 初期構築
+- コンテナをアタッチする
+- `/app`のパスを指定する
+- `git clone ~url~.git .`コマンドを使用してクローンしてくる
 
 ## postgre-sqlの使用方法
 Shellをアタッチ後に以下のコマンドを入力

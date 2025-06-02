@@ -5,6 +5,7 @@ services:
     build:
       context: ./react-app
       dockerfile: ./Dockerfile
+      target: build
     ports:
       - "${REACT_PORT}:${REACT_PORT}"
     volumes:
@@ -35,6 +36,7 @@ services:
     build:
       context: ./go-server
       dockerfile: ./Dockerfile
+      target: build
     ports:
       - "${GO_PORT}:${GO_PORT}"
     volumes:
@@ -50,6 +52,7 @@ services:
     build:
       context: ./python-service
       dockerfile: ./Dockerfile
+      target: build
     ports:
       - "${PYTHON_PORT}:${PYTHON_PORT}"
     volumes:
