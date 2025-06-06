@@ -9,6 +9,9 @@ openssh-client \
 
 # 作業ディレクトリを設定
 WORKDIR /app
+
 # Pythonの依存関係をインストール
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 CMD ["tail", "-f", "/dev/null"]
