@@ -1,6 +1,3 @@
 .env
 db-data/*
-go-server/app/*
-react-app/app/*
-python-service/app/*
 .DS_Store
