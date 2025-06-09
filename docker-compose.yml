@@ -8,8 +8,6 @@ services:
       target: build
     ports:
       - "${REACT_PORT}:${REACT_PORT}"
-    volumes:
-      - ./react-app/app:/app
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
@@ -48,8 +46,6 @@ services:
       target: build
     ports:
       - "${GO_PORT}:${GO_PORT}"
-    volumes:
-      - ./go-server/app:/app
     environment:
       - GO_ENV=development
     env_file:
@@ -64,8 +60,6 @@ services:
       target: build
     ports:
       - "${PYTHON_PORT}:${PYTHON_PORT}"
-    volumes:
-      - ./python-service/app:/app
     environment:
       - PYTHON_ENV=development
     env_file:
