@@ -65,29 +65,28 @@ services:
     env_file:
       - .env
 
-  keycloak-data:
-    image: quay.io/keycloak/keycloak:latest
-    container_name: keycloak-data
-    command: start-dev
-    environment:
-      - KC_DB=postgres
-      - KC_DB_URL_HOST=postgres-db
-      - KC_DB_URL_PORT=${DB_PORT}
-      - KC_DB_URL_DATABASE=${KEYCLOAK_DB_NAME}
-      - KC_DB_USERNAME=${DB_USER}
-      - KC_DB_PASSWORD=${DB_PASSWORD}
-      - KEYCLOAK_ADMIN=${KEYCLOAK_ADMIN_USER}
-      - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
-      - KC_HOSTNAME_STRICT=false
-      - KC_HOSTNAME_STRICT_HTTPS=false
-      - KC_HTTP_ENABLED=true
-      - KC_HTTP_PORT=${KEYCLOAK_PORT}
+  auth-service:
+    image: auth-service:latest
+    container_name: auth-service
+    build:
+      context: ./auth_service
+      dockerfile: ./Dockerfile
+      target: build
     ports:
-      - "${KEYCLOAK_PORT}:${KEYCLOAK_PORT}"
-    volumes:
-      - ./keycloak-data:/opt/keycloak/data
+      - "${AUTH_PORT}:${AUTH_PORT}"
+    environment:
+      - GO_ENV=development
+      - DB_HOST=postgres-db
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${AUTH_DB_NAME}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - SESSION_SECRET=${SESSION_SECRET}
+      - AUTH_CALLBACK_URL=${AUTH_CALLBACK_URL}
+    env_file:
+      - .env
     depends_on:
       postgres-db:
         condition: service_healthy
-    env_file:
-      - .env
