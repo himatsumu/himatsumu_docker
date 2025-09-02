@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   name: postgres
 spec:
-  serviceName: "postgres"
+  serviceName: "postgres-service"
   replicas: 1
   selector:
     matchLabels:
@@ -19,8 +19,8 @@ spec:
         ports:
         - containerPort: 5432
         envFrom:
-        - secretRef:
-          name: postgres-secret
+          - secretRef:
+              name: postgres-secret
         volumeMounts:
         - name: postgres-storage
           mountPath: /var/lib/postgresql/data
@@ -36,6 +36,7 @@ spec:
       name: postgres-storage
     spec:
       accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "local-path"
       resources:
         requests:
           storage: 2Gi
