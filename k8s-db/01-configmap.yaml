@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: postgres-init
 data:
-  init.sql: |
+  init-db.sh: |
     #!/bin/bash
     set -e
 
